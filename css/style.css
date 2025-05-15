@@ -13,16 +13,17 @@ body {
     margin: 0;
     padding: 0;
     color: var(--dark-text);
-    background-color: var(--light-bg);
-    line-height: 1.6;
-}
-
-/* Header Styles */
-.header {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                url('https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/BackGround.png');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    line-height: 1.6;
+    font-size: 1.25rem;
+}
+
+/* Header Styles */ 
+.header {
+    /* 只保留布局和文字样式，不再设置背景 */
     height: 100vh;
     display: flex;
     align-items: center;
@@ -38,26 +39,27 @@ body {
 
 .team-name {
     font-family: 'Dancing Script', cursive;
-    font-size: 5rem;
+    font-size: 6rem;
     margin: 0;
     color: var(--accent-gold);
 }
 
 .slogan {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-top: 1rem;
 }
 
 /* Team Section */
 .team-section {
-    padding: 4rem 2rem;
-    background-color: var(--white);
+    padding: 4rem 1rem;
+    background-color: rgba(42, 94, 70, 0); /* 更透明 */
+    margin: 0 auto;
 }
 
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    color: var(--primary-green);
+    font-size: 3rem;
+    color: #ffffff; /* White */
     margin-bottom: 3rem;
 }
 
@@ -65,14 +67,14 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
-    max-width: 1200px;
+    gap: 6rem; /* 卡片间距更宽 */
+    max-width: 1800px;
     margin: 0 auto;
 }
 
 .team-member {
-    width: 300px;
-    height: 400px;
+    width: 420px;
+    height: 600px;
     perspective: 1000px;
 }
 
@@ -96,7 +98,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 2.5rem;
+    font-size: 1.8rem;
+    color: #306352fd; /* White */
 }
 
 .member-front {
@@ -106,13 +110,13 @@ body {
 
 .member-back {
     background-color: var(--primary-green);
-    color: var(--white);
+    color: var(--white); /* 保持背面为白色字体，正面为深墨绿 */
     transform: rotateY(180deg);
 }
 
 .member-photo {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
@@ -122,14 +126,14 @@ body {
 /* Events Section */
 .events-section {
     padding: 4rem 2rem;
-    background-color: var(--light-bg);
+    background-color: rgba(42, 94, 70, 0); /* 更透明 */
 }
 
 .events-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -137,10 +141,16 @@ body {
 .event-card {
     background-color: var(--white);
     border-radius: 10px;
-    padding: 2rem;
-    width: 300px;
+    padding: 3rem;
+    width: 420px;
+    min-height: 320px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    font-size: 2.1rem;
+    color: #fff !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .event-card:hover {
@@ -152,22 +162,25 @@ body {
     color: var(--accent-gold);
     font-weight: bold;
     margin-bottom: 0.5rem;
+    font-size: 1.7rem;
 }
 
 .event-title {
-    color: var(--primary-green);
+    color: #ffffff; /* White */
     margin-top: 0;
+    font-size: 2.4rem;
 }
 
 .event-details {
     margin-top: 1rem;
     color: var(--dark-text);
+    font-size: 1.5rem;
 }
 
 /* Contact Section */
 .contact-section {
     padding: 4rem 2rem;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
                 url('https://images.unsplash.com/photo-1530137073520-2a16bd0d1e21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
@@ -178,6 +191,8 @@ body {
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
+    color: #fff !important;
+    font-size: 1.4rem;
 }
 
 .cta-button {
@@ -185,7 +200,7 @@ body {
     color: var(--dark-text);
     border: none;
     padding: 1rem 2rem;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -206,7 +221,7 @@ body {
 
 .social-links a {
     color: var(--white);
-    font-size: 2rem;
+    font-size: 2.7rem;
     transition: color 0.3s ease;
 }
 
