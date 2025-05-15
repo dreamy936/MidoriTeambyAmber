@@ -249,3 +249,12 @@ body {
         max-width: 350px;
     }
 }
+
+@media (max-width: 600px) {
+  body {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../img/BackGroundForPhone.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+}
