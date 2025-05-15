@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header-content">
             <h1 class="team-name">Midori</h1>
-            <p class="slogan">Pedal for a Greener World. Let's ride beyond limits.</p>
+            <p class="slogan">Pedal for a Greener World.<br>Let's ride beyond limits.</p>
         </div>
     </header>
 
@@ -26,38 +26,40 @@
             <!-- Member 1 -->
             <div class="team-member">
                 <div class="member-front">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="KOU" class="member-photo">
-                    <h3>KOU</h3>
+                    <img src="img/KOU.jpg" alt="KOU" class="member-photo">
+                    <h3>KOU <span style='font-size:1.2rem; color:var(--accent-gold);'>(Captain)</span></h3>
                 </div>
                 <div class="member-back">
-                    <p><strong>Age:</strong> 28</p>
-                    <p><strong>Hobbies:</strong> Photography & Climbing</p>
-                    <p><strong>Bike:</strong> COLNAGO V3Rs</p>
+                    <p><strong>Age:</strong> 25</p>
+                    <p><strong>Hobbies:</strong> Everything</p>
+                    <p><strong>Bike:</strong> COLNAGO V3</p>
+                    <img src="img/KOUsBike.jpg" alt="KOU's Bike" style="width: 80%; border-radius: 10px; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
                 </div>
             </div>
             
             <!-- Member 2 -->
             <div class="team-member">
                 <div class="member-front">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Amber" class="member-photo">
+                    <img src="img/Amber.jpg" alt="Amber" class="member-photo">
                     <h3>Amber</h3>
                 </div>
                 <div class="member-back">
                     <p><strong>Age:</strong> 26</p>
-                    <p><strong>Hobbies:</strong> Painting & Coffee</p>
-                    <p><strong>Bike:</strong> Giant Propel</p>
+                    <p><strong>Hobbies:</strong> Cycling, hiking, coding</p>
+                    <p><strong>Bike:</strong> Giant FKCC</p>
+                    <img src="img/AmbersBike.jpg" alt="Amber's Bike" style="width: 80%; border-radius: 10px; margin-top: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
                 </div>
             </div>
             
             <!-- Member 3 -->
             <div class="team-member">
                 <div class="member-front">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Tomas" class="member-photo">
+                    <img src="img/Thomas.jpg" alt="Tomas" class="member-photo" style="object-position: top; margin-top: 30px;">
                     <h3>Tomas</h3>
                 </div>
                 <div class="member-back">
-                    <p><strong>Age:</strong> 30</p>
-                    <p><strong>Hobbies:</strong> Ramen & Hiking</p>
+                    <p><strong>Age:</strong> 28</p>
+                    <p><strong>Hobbies:</strong> Coding</p>
                     <p><strong>Bike:</strong> Bloom</p>
                 </div>
             </div>
@@ -89,14 +91,29 @@
     <footer class="contact-section">
         <h2 class="section-title">Join Our Journey</h2>
         <div class="contact-container">
-            <button class="cta-button">Join the Team</button>
+            <button class="cta-button" id="joinBtn">Join the Team</button>
             <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-strava"></i></a>
+                <a href="https://www.instagram.com/misori_team?igsh=ZnJ6eGx2ZDVuN3Vl" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@kosvlog1511?si=4l-SpmG5_GOGvc4w" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.xiaohongshu.com/user/profile/5b5ec554e8ac2b7499f90849?xsec_token=YBHNBoNyqbGTgnHxdtA_HqQFWVTWumFb9-w2S49QtysgQ=&xsec_source=app_share&xhsshare=CopyLink&appuid=5b5ec554e8ac2b7499f90849&apptime=1747109984&share_id=9b986529a7d147f0893692856c7dff5a" target="_blank"><i class="fab fa-strava"></i></a>
             </div>
         </div>
     </footer>
+
+    <div id="joinModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
+        <form id="joinForm" action="https://formspree.io/f/xanoalzn" method="POST" style="background:#fff; color:#222; border-radius:16px; max-width:400px; width:90vw; margin:auto; padding:2.5rem 2rem; display:flex; flex-direction:column; gap:1.2rem; position:relative;">
+            <button type="button" id="closeModal" style="position:absolute; right:1.2rem; top:1.2rem; background:none; border:none; font-size:2rem; color:#888; cursor:pointer;">&times;</button>
+            <h2 style="color:#1a3e2f; margin-bottom:0.5rem;">Join the Team</h2>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required style="padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required style="padding:0.5rem; border-radius:6px; border:1px solid #ccc;">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required style="padding:0.5rem; border-radius:6px; border:1px solid #ccc;"></textarea>
+            <button type="submit" style="background:#1a3e2f; color:#fff; border:none; border-radius:6px; padding:0.8rem 0; font-size:1.2rem; margin-top:1rem; cursor:pointer;">Submit</button>
+            <div id="formSuccess" style="display:none; color:green; margin-top:1rem; text-align:center;">Thank you! Your message has been sent.</div>
+        </form>
+    </div>
 
     <script src="js/main.js"></script>
 </body>

@@ -55,3 +55,29 @@ const animateOnScroll = () => {
 
 window.addEventListener('scroll', animateOnScroll);
 animateOnScroll();
+
+// Join form modal logic
+const joinBtn = document.getElementById('joinBtn');
+const joinModal = document.getElementById('joinModal');
+const closeModal = document.getElementById('closeModal');
+const joinForm = document.getElementById('joinForm');
+const formSuccess = document.getElementById('formSuccess');
+
+if (joinBtn && joinModal && closeModal) {
+    joinBtn.onclick = () => { joinModal.style.display = 'flex'; };
+    closeModal.onclick = () => { joinModal.style.display = 'none'; };
+    joinModal.onclick = (e) => { if (e.target === joinModal) joinModal.style.display = 'none'; };
+}
+
+if (joinForm && formSuccess) {
+    joinForm.addEventListener('submit', function(e) {
+        setTimeout(() => {
+            formSuccess.style.display = 'block';
+            setTimeout(() => {
+                joinModal.style.display = 'none';
+                formSuccess.style.display = 'none';
+                joinForm.reset();
+            }, 2000);
+        }, 100);
+    });
+}
