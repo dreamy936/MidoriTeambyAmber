@@ -81,3 +81,36 @@ if (joinForm && formSuccess) {
         }, 100);
     });
 }
+
+// Team Events Gallery Slider with arrows
+(function() {
+    const slider = document.getElementById('eventGallerySlider');
+    if (!slider) return;
+    const slides = slider.querySelector('.event-gallery-slides');
+    const images = slides.querySelectorAll('img');
+    const prevBtn = document.getElementById('eventGalleryPrev');
+    const nextBtn = document.getElementById('eventGalleryNext');
+    let idx = 0;
+    let timer = null;
+    function showSlide(i) {
+        slides.style.transform = `translateX(-${i * 100}%)`;
+    }
+    function nextSlide() {
+        idx = (idx + 1) % images.length;
+        showSlide(idx);
+    }
+    function prevSlide() {
+        idx = (idx - 1 + images.length) % images.length;
+        showSlide(idx);
+    }
+    function resetTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(nextSlide, 3000);
+    }
+    if (nextBtn && prevBtn) {
+        nextBtn.onclick = () => { nextSlide(); resetTimer(); };
+        prevBtn.onclick = () => { prevSlide(); resetTimer(); };
+    }
+    timer = setInterval(nextSlide, 3000);
+    showSlide(0);
+})();

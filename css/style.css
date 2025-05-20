@@ -177,6 +177,88 @@ body {
     font-size: 1.5rem;
 }
 
+/* Events Gallery Section Styles */
+.events-gallery-section {
+    width: 100%;
+    padding: 4rem 0 2rem 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.event-gallery-slider {
+    width: 95vw;
+    max-width: 900px;
+    height: 900px;
+    margin: 0 auto 2rem auto;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+    background: #222;
+    position: relative;
+    aspect-ratio: 1 / 1;
+}
+.event-gallery-slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.7s cubic-bezier(.4,1.3,.6,1);
+}
+.event-gallery-slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 18px;
+}
+.event-gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    border: none;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s;
+}
+.event-gallery-arrow:hover {
+    background: rgba(0,0,0,0.7);
+}
+.event-gallery-arrow.left {
+    left: 18px;
+}
+.event-gallery-arrow.right {
+    right: 18px;
+}
+.event-list,
+.event-list * {
+    color: #e6c75c !important;
+    font-size: 2.3  rem;
+}
+@media (max-width: 700px) {
+    .event-list,
+    .event-list * {
+        font-size: 1.2rem;
+    }
+    .event-gallery-slider {
+        height: 70vw;
+        max-width: 98vw;
+        aspect-ratio: 1 / 1;
+    }
+    .event-gallery-slides img {
+        height: 70vw;
+    }
+}
+
 /* Contact Section */
 .contact-section {
     padding: 4rem 2rem;
@@ -256,5 +338,27 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+  .event-gallery-slider {
+    height: 200px;
+    max-width: 98vw;
+  }
+  .event-gallery-slides img {
+    height: 200px;
+  }
+  .event-list {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    font-size: 1.05rem;
+    color: var(--accent-gold);
+    font-size: 1.7rem;
+  }
+  .event-list {
+    color: var(--accent-gold);
+    font-size: 1.7rem;
+  }
+  .event-list li h3,
+  .event-list li p {
+    color: var(--accent-gold);
+    font-size: 1.7rem;
   }
 }
