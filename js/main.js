@@ -34,6 +34,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// 修正导航锚点跳转 Y 轴偏移
+function scrollToAnchorWithOffset(e) {
+    const header = document.querySelector('header');
+    const offset = header ? header.offsetHeight + 10 : 70; // header高度+10px
+    const targetId = this.getAttribute('href').replace('#', '');
+    const target = document.getElementById(targetId);
+    if (target) {
+        e.preventDefault();
+        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+            top: elementPosition - offset,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// 绑定所有锚点链接
+window.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', scrollToAnchorWithOffset);
+    });
+});
+
 // Mobile Menu Toggle (for future implementation)
 const menuToggle = document.querySelector('.mobile-menu-toggle');
 if (menuToggle) {
@@ -57,14 +80,14 @@ window.addEventListener('scroll', animateOnScroll);
 animateOnScroll();
 
 // Join form modal logic
-const joinBtn = document.getElementById('joinBtn');
+const joinBtn = document.querySelector('.btn[href="#join"]');
 const joinModal = document.getElementById('joinModal');
 const closeModal = document.getElementById('closeModal');
 const joinForm = document.getElementById('joinForm');
 const formSuccess = document.getElementById('formSuccess');
 
 if (joinBtn && joinModal && closeModal) {
-    joinBtn.onclick = () => { joinModal.style.display = 'flex'; };
+    joinBtn.onclick = (e) => { e.preventDefault(); joinModal.style.display = 'flex'; };
     closeModal.onclick = () => { joinModal.style.display = 'none'; };
     joinModal.onclick = (e) => { if (e.target === joinModal) joinModal.style.display = 'none'; };
 }
@@ -114,3 +137,57 @@ if (joinForm && formSuccess) {
     timer = setInterval(nextSlide, 3000);
     showSlide(0);
 })();
+
+// Activities Gallery Slider with arrows and auto-scroll
+(function() {
+    const slider = document.getElementById('activitiesSlider');
+    if (!slider) return;
+    const slides = slider.querySelector('.activities-slides');
+    const images = slides.querySelectorAll('img');
+    const prevBtn = document.getElementById('activitiesPrev');
+    const nextBtn = document.getElementById('activitiesNext');
+    let idx = 0;
+    let timer = null;
+    function showSlide(i) {
+        slides.style.transform = `translateX(-${i * 100}%)`;
+    }
+    function nextSlide() {
+        idx = (idx + 1) % images.length;
+        showSlide(idx);
+    }
+    function prevSlide() {
+        idx = (idx - 1 + images.length) % images.length;
+        showSlide(idx);
+    }
+    function resetTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(nextSlide, 3500);
+    }
+    if (nextBtn && prevBtn) {
+        nextBtn.onclick = () => { nextSlide(); resetTimer(); };
+        prevBtn.onclick = () => { prevSlide(); resetTimer(); };
+    }
+    timer = setInterval(nextSlide, 3500);
+    showSlide(0);
+})();
+
+// Contact弹窗逻辑
+const contactBtn = document.getElementById('contactPopupBtn');
+const contactPopup = document.getElementById('contactPopup');
+const closeContactPopup = document.getElementById('closeContactPopup');
+if (contactBtn && contactPopup && closeContactPopup) {
+    contactBtn.onclick = (e) => { e.preventDefault(); contactPopup.style.display = 'flex'; };
+    contactBtn.addEventListener('click', function(e) { e.preventDefault(); }); // 阻止锚点跳转
+    closeContactPopup.onclick = () => { contactPopup.style.display = 'none'; };
+    contactPopup.onclick = (e) => { if (e.target === contactPopup) contactPopup.style.display = 'none'; };
+}
+
+// Slogan弹窗逻辑
+const sloganBtn = document.getElementById('sloganPopupBtn');
+const sloganPopup = document.getElementById('sloganPopup');
+const closeSloganPopup = document.getElementById('closeSloganPopup');
+if (sloganBtn && sloganPopup && closeSloganPopup) {
+    sloganBtn.onclick = (e) => { e.preventDefault(); sloganPopup.style.display = 'flex'; };
+    closeSloganPopup.onclick = () => { sloganPopup.style.display = 'none'; };
+    sloganPopup.onclick = (e) => { if (e.target === sloganPopup) sloganPopup.style.display = 'none'; };
+}
